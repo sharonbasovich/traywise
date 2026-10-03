@@ -29,7 +29,7 @@ The original HTML, CSS, application, model, CSV, and evaluation report are check
 - 2026-09-21, event off, leftover weight 1: shortage weights 1/3/6 yield 104/113/114. Assertions also retain warnings, unchanged holdout metrics, and the direction of the displayed surplus/shortfall tradeoff.
 - The actual downloaded JSON, preserved byte-for-byte under `downloads/`. Its complete inputs, model specification, evaluation object (including splits/residuals), decision, engine hash, and canonical input hash are compared against the unchanged engine. The video briefly opens this actual file in Chromium's native viewer. That shot is a file viewer, not an in-app JSON feature.
 - A clearly named `FICTIONAL-DEMO-111-services.csv` containing the first 111 rows of the published fictional sample. The native app truthfully labels this changed fixture `LOCAL CSV · USER-SUPPLIED COUNTS`; its filename identifies it as fictional. Reload must restore the original fictional source, 112 days, and an empty file input. The changed row count makes the reset observable. No personal CSV is used. Keep a plainly labeled fictional-data editorial caption over this import passage if needed; never replace the app's native label.
-- The exact original evaluation report, served as **plain Markdown** in Chromium. It is not a fabricated rendered report or a new evaluation. The verified table contains no-signal selected recentMean MAE 27.7222 versus weekdayMedian 23.9722, and abrupt-shift 0/18 for all models. The original post-inspection regression disclosure is preserved.
+- A byte-identical local copy of the original published evaluation report, opened as **plain Markdown** in Chromium's native text viewer through an explicit UTF-8 data URL. The displayed text must reproduce the original file's SHA-256. This avoids Chromium's Windows-1252 decoding of the unchanged app server's charset-less text/plain response. It is not a live-hosted report capture, a fabricated rendered report, or a new evaluation. The verified table contains no-signal selected recentMean MAE 27.7222 versus weekdayMedian 23.9722, and abrupt-shift 0/18 for all models. The original post-inspection regression disclosure is preserved.
 
 ## Artifact and editing contract
 
@@ -40,7 +40,7 @@ The original HTML, CSS, application, model, CSV, and evaluation report are check
 Before any final release:
 
 - Check every scene's actual images, disclosure visibility, export, and report legibility. If a frame is unreadable or a claim differs, fix the capture instructions or revise the narration; never patch the displayed application values.
-- Keep “Synthetic evaluation; no field outcomes.” visible over the report shot. Do not describe the original report as a fresh CI benchmark.
+- Keep “Synthetic evaluation; no field outcomes. Local copy of published report.” visible over the report shot. Do not describe the original report as a fresh CI benchmark.
 - Keep the final disclosure: “Fictional demonstration. No measured food or carbon savings. AI-assisted build; narration generated locally with Kokoro-82M, stock Heart voice.” This is editorial text for the final video, not injected application UI.
 - Listen to the complete narration and final mix. Verify captions against the actual final cuts. Raw capture/decode checks do not replace this review.
 - Preserve the failed raw artifact if a run fails. Do not edit a failed state into an apparent successful interaction.
