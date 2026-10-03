@@ -1,0 +1,57 @@
+name: Capture TrayWise demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: traywise-demo-capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    # Standard public-repository runner. No paid service or additional credentials.
+    if: github.repository == 'sharonbasovich/traywise'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Verify unchanged app and capture claims
+        run: |
+          npm run check
+          node --check scripts/capture-demo.mjs
+          node scripts/capture-demo.mjs --verify-only
+      - run: npx --no-install playwright install --with-deps chromium
+      - name: Ensure official Ubuntu FFmpeg is available
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends ffmpeg
+          fi
+          ffmpeg -version
+          ffprobe -version
+      - name: Record the actual app and verify all raw videos
+        env:
+          CI: 'true'
+        run: |
+          mkdir -p demo-capture
+          BASE_PATH=/traywise node server.js > demo-capture/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node scripts/capture-demo.mjs
+      - name: Preserve raw evidence, including unsuccessful captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: traywise-demo-${{ github.run_id }}-${{ github.run_attempt }}
+          path: demo-capture/
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 0
