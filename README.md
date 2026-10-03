@@ -61,7 +61,7 @@ A separate evaluator froze synthetic fixtures and a NumPy oracle before seeing i
 
 An independent adversarial audit then found a floating-point quantile/tie edge case. The optimizer was corrected to inspect integer neighbors of every scenario plus zero. Follow-on runs are explicitly **post-inspection regression**, not fresh untouched validation. The complete preserved evaluator report is in `docs/EVALUATION-REPORT.md` and linked in the evidence view.
 
-Current verification: 19 development tests pass (9 model/property tests, 7 DOM/security tests and 3 independent export-race regression tests), plus 5,509 independent adversarial assertions and independent NumPy reproduction across six worlds. DOM tests cover keyboard tabs, invalid-date recovery, unchanged metrics during penalty adjustment, malicious filename handling, failed imports, and sample provenance after CSV roundtrip. Actual-browser visual/accessibility/mobile checks remain unperformed; a Node test pass is not a browser pass. Screenshots and video are not yet captured.
+Published baseline verification: 19 development tests passed (9 model/property tests, 7 DOM/security tests and 3 independent export-race regression tests), plus 5,509 independent adversarial assertions and independent NumPy reproduction across six worlds. DOM tests cover keyboard tabs, invalid-date recovery, unchanged metrics during penalty adjustment, malicious filename handling, failed imports, and sample provenance after CSV roundtrip. The published baseline also passed 4 real Chromium browser tests across desktop and mobile viewports; actual screenshots were captured and visually inspected. This is focused workflow and responsive-layout coverage, not a comprehensive accessibility audit or real-device/Safari validation. The demo video has not yet been recorded.
 
 ## Repository map
 
@@ -74,17 +74,19 @@ Current verification: 19 development tests pass (9 model/property tests, 7 DOM/s
 
 ## Submission boundaries
 
-Selected track: **AI + Climate**. AI-assisted coding is disclosed; application core, UI and demonstration data were created for this entry after prompt release. No previous campaign core code, fixture or visual asset is reused. Solo build pending verified teammate additions. Source publication, deployment and demo upload have not yet occurred. Mandatory public 2–4-minute demo, accessible source, and final submission verification remain release gates.
+Selected track: **AI + Climate**. AI-assisted coding is disclosed; application core, UI and demonstration data were created for this entry after prompt release. No previous campaign core code, fixture or visual asset is reused. Solo build pending verified teammate additions. The source and [public QA preview](https://sharonbasovich.github.io/traywise/) are published. This is a QA preview, not a contest submission. The mandatory public 2–4-minute demo and final submission verification remain release gates.
 
 ## Browser verification and hosting
 
 All links and assets are relative, including modules and evaluation-report link, for a GitHub Pages project path such as `/traywise/`. A CSP meta tag preserves the no-network policy on static hosting; the local server also sends CSP and nosniff headers. The plot uses inline style properties only; scripts remain same-origin-only, with no inline script allowance.
 
-The authored CI suite runs Chromium desktop (1440px) and mobile (iPhone-sized viewport) against the served `/traywise/` path. It checks real file import/download, keyboard tabs, no unexpected network requests, no runtime page errors, invalid/underpowered state recovery, overflow and actual screenshots. **This suite is prepared but has not yet executed in a real browser.** CI must pass before those gates are marked complete.
+The authored CI suite runs Chromium desktop (1440px) and mobile (iPhone-sized viewport) against the served `/traywise/` path. It checks real file import/download, keyboard tabs, no unexpected network requests, no runtime page errors, invalid/underpowered state recovery, overflow and actual screenshots. The [baseline verification run](https://github.com/sharonbasovich/traywise/actions/runs/37144478811) passed all 19 development tests and 4 browser tests on published commit `6d8cc1a83563138cf65a579b84aa3b6f220f6956`. All 22 files in that baseline were verified byte-identical to the reviewed source snapshot. [Pages deployment](https://github.com/sharonbasovich/traywise/actions/runs/37144683292) succeeded for the same commit. Later changes must pass their own CI; these links establish the baseline only.
 
 ```sh
 npx playwright install --with-deps chromium
 npm run test:browser
 ```
 
-These are future CI/local-developer verification commands, not evidence that execution has happened. `.github/workflows/verify.yml` preserves browser reports and actual screenshots as CI artifacts.
+These commands reproduce the browser checks. `.github/workflows/verify.yml` preserves browser reports and actual screenshots as CI artifacts.
+
+The deployed preview was also smoke-tested for planning tradeoffs, evidence/data tabs, keyboard navigation, invalid-date guarding and recovery. Its export action reported a download, but the cloud browser capture timed out; the deployed JSON payload was not inspected. The CI export test independently parsed and checked the downloaded JSON. A presentation-only ordinal regression covers `91st` and the `11th`–`13th` exceptions without changing the numerical engine.
