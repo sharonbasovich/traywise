@@ -1,0 +1,19 @@
+{
+  "name": "traywise",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "start": "node server.js",
+    "check": "node --check src/model.js && node --check src/app.js && node --test test/*.test.js",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "happy-dom": "^20.14.5"
+  }
+}
