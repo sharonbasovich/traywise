@@ -1,0 +1,358 @@
+{
+  "status": "Pre-capture narration draft, not a submitted video",
+  "sampleRate": 24000,
+  "channels": 1,
+  "codec": "PCM signed 16-bit little-endian",
+  "scriptSha256": "d29adc65c4f23e235511d5b3e4c0e101522ec1d18e237fafb9d5d8dd2d69e363",
+  "durationSeconds": 175.875,
+  "speechFileSeconds": 154.875,
+  "insertedSilenceSeconds": 21.0,
+  "leadingSilenceSeconds": 1,
+  "scenes": [
+    {
+      "id": "01-decision",
+      "filename": "01-decision.wav",
+      "title": "The decision",
+      "startSample": 24000,
+      "endSample": 442200,
+      "startSeconds": 1.0,
+      "endSeconds": 18.425,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "02-observations",
+      "filename": "02-observations.wav",
+      "title": "What the history knows",
+      "startSample": 514200,
+      "endSample": 1104000,
+      "startSeconds": 21.425,
+      "endSeconds": 46.0,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "03-learning",
+      "filename": "03-learning.wav",
+      "title": "Learning with honest alternatives",
+      "startSample": 1176000,
+      "endSample": 1827000,
+      "startSeconds": 49.0,
+      "endSeconds": 76.125,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "04-choice",
+      "filename": "04-choice.wav",
+      "title": "An operator-controlled tradeoff",
+      "startSample": 1899000,
+      "endSample": 2598000,
+      "startSeconds": 79.125,
+      "endSeconds": 108.25,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "05-audit",
+      "filename": "05-audit.wav",
+      "title": "An inspectable decision",
+      "startSample": 2670000,
+      "endSample": 3133200,
+      "startSeconds": 111.25,
+      "endSeconds": 130.55,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "06-failures",
+      "filename": "06-failures.wav",
+      "title": "Keep failures visible",
+      "startSample": 3205200,
+      "endSample": 3669000,
+      "startSeconds": 133.55,
+      "endSeconds": 152.875,
+      "followingPauseSeconds": 3.0
+    },
+    {
+      "id": "07-next",
+      "filename": "07-next.wav",
+      "title": "The next real test",
+      "startSample": 3741000,
+      "endSample": 4173000,
+      "startSeconds": 155.875,
+      "endSeconds": 173.875,
+      "followingPauseSeconds": 2.0
+    }
+  ],
+  "sentences": [
+    {
+      "scene": "01-decision",
+      "text": "How many lunches should a kitchen prepare?",
+      "startSample": 24000,
+      "endSample": 88200,
+      "startSeconds": 1.0,
+      "endSeconds": 3.675
+    },
+    {
+      "scene": "01-decision",
+      "text": "Too many leaves surplus.",
+      "startSample": 88200,
+      "endSample": 135600,
+      "startSeconds": 3.675,
+      "endSeconds": 5.65
+    },
+    {
+      "scene": "01-decision",
+      "text": "Too few leaves requests unserved.",
+      "startSample": 135600,
+      "endSample": 197400,
+      "startSeconds": 5.65,
+      "endSeconds": 8.225
+    },
+    {
+      "scene": "01-decision",
+      "text": "TrayWise makes that tradeoff visible, before cooking begins.",
+      "startSample": 197400,
+      "endSample": 298800,
+      "startSeconds": 8.225,
+      "endSeconds": 12.45
+    },
+    {
+      "scene": "01-decision",
+      "text": "This prototype uses fictional data.",
+      "startSample": 298800,
+      "endSample": 367800,
+      "startSeconds": 12.45,
+      "endSeconds": 15.325
+    },
+    {
+      "scene": "01-decision",
+      "text": "It has not measured food or carbon savings.",
+      "startSample": 367800,
+      "endSample": 442200,
+      "startSeconds": 15.325,
+      "endSeconds": 18.425
+    },
+    {
+      "scene": "02-observations",
+      "text": "Start with the history.",
+      "startSample": 514200,
+      "endSample": 557400,
+      "startSeconds": 21.425,
+      "endSeconds": 23.225
+    },
+    {
+      "scene": "02-observations",
+      "text": "Ninety meals served, with all one hundred twenty-eight requests counted, gives an exact recorded target.",
+      "startSample": 557400,
+      "endSample": 721800,
+      "startSeconds": 23.225,
+      "endSeconds": 30.075
+    },
+    {
+      "scene": "02-observations",
+      "text": "But ninety-seven meals sold without complete request counts gives only a lower bound.",
+      "startSample": 721800,
+      "endSample": 864000,
+      "startSeconds": 30.075,
+      "endSeconds": 36.0
+    },
+    {
+      "scene": "02-observations",
+      "text": "TrayWise keeps that row visible without inventing demand.",
+      "startSample": 864000,
+      "endSample": 964200,
+      "startSeconds": 36.0,
+      "endSeconds": 40.175
+    },
+    {
+      "scene": "02-observations",
+      "text": "Excluding these potentially high-demand days can bias both learning and evaluation.",
+      "startSample": 964200,
+      "endSample": 1104000,
+      "startSeconds": 40.175,
+      "endSeconds": 46.0
+    },
+    {
+      "scene": "03-learning",
+      "text": "A regularized regression learns weekday, trend, and pre-known event patterns locally.",
+      "startSample": 1176000,
+      "endSample": 1318200,
+      "startSeconds": 49.0,
+      "endSeconds": 54.925
+    },
+    {
+      "scene": "03-learning",
+      "text": "It competes with weekday median and recent mean baselines.",
+      "startSample": 1318200,
+      "endSample": 1416600,
+      "startSeconds": 54.925,
+      "endSeconds": 59.025
+    },
+    {
+      "scene": "03-learning",
+      "text": "Earlier training records select the model.",
+      "startSample": 1416600,
+      "endSample": 1489200,
+      "startSeconds": 59.025,
+      "endSeconds": 62.05
+    },
+    {
+      "scene": "03-learning",
+      "text": "A fixed chronological holdout tests it afterward.",
+      "startSample": 1489200,
+      "endSample": 1572600,
+      "startSeconds": 62.05,
+      "endSeconds": 65.525
+    },
+    {
+      "scene": "03-learning",
+      "text": "In this fictional sample, ridge has lower average absolute error, but its nominal eighty-percent band covers only fourteen of twenty-one known holdout days.",
+      "startSample": 1572600,
+      "endSample": 1827000,
+      "startSeconds": 65.525,
+      "endSeconds": 76.125
+    },
+    {
+      "scene": "04-choice",
+      "text": "Now plan the same service with different shortage penalties.",
+      "startSample": 1899000,
+      "endSample": 1987800,
+      "startSeconds": 79.125,
+      "endSeconds": 82.825
+    },
+    {
+      "scene": "04-choice",
+      "text": "With leftover weight fixed at one, shortage weights of one, three, and six recommend one hundred four, one hundred thirteen, and one hundred fourteen portions.",
+      "startSample": 1987800,
+      "endSample": 2223600,
+      "startSeconds": 82.825,
+      "endSeconds": 92.65
+    },
+    {
+      "scene": "04-choice",
+      "text": "More preparation reduces estimated shortfall while raising estimated surplus.",
+      "startSample": 2223600,
+      "endSample": 2361600,
+      "startSeconds": 92.65,
+      "endSeconds": 98.4
+    },
+    {
+      "scene": "04-choice",
+      "text": "These are historical-error scenarios, not measured outcomes.",
+      "startSample": 2361600,
+      "endSample": 2463000,
+      "startSeconds": 98.4,
+      "endSeconds": 102.625
+    },
+    {
+      "scene": "04-choice",
+      "text": "The operator decides what to cook.",
+      "startSample": 2463000,
+      "endSample": 2524800,
+      "startSeconds": 102.625,
+      "endSeconds": 105.2
+    },
+    {
+      "scene": "04-choice",
+      "text": "Extrapolating beyond training adds risk.",
+      "startSample": 2524800,
+      "endSample": 2598000,
+      "startSeconds": 105.2,
+      "endSeconds": 108.25
+    },
+    {
+      "scene": "05-audit",
+      "text": "The local export includes input rows, model details, chronological splits, residuals, and the decision.",
+      "startSample": 2670000,
+      "endSample": 2851800,
+      "startSeconds": 111.25,
+      "endSeconds": 118.825
+    },
+    {
+      "scene": "05-audit",
+      "text": "That makes the reasoning reproducible.",
+      "startSample": 2851800,
+      "endSample": 2916600,
+      "startSeconds": 118.825,
+      "endSeconds": 121.525
+    },
+    {
+      "scene": "05-audit",
+      "text": "Imports remain in tab memory and disappear on reload.",
+      "startSample": 2916600,
+      "endSample": 3016800,
+      "startSeconds": 121.525,
+      "endSeconds": 125.7
+    },
+    {
+      "scene": "05-audit",
+      "text": "Exported files contain those records, so they need appropriate handling.",
+      "startSample": 3016800,
+      "endSample": 3133200,
+      "startSeconds": 125.7,
+      "endSeconds": 130.55
+    },
+    {
+      "scene": "06-failures",
+      "text": "Independent synthetic evaluation preserves failures.",
+      "startSample": 3205200,
+      "endSample": 3300000,
+      "startSeconds": 133.55,
+      "endSeconds": 137.5
+    },
+    {
+      "scene": "06-failures",
+      "text": "In the no-signal case, the selected model loses to a simpler baseline on holdout error.",
+      "startSample": 3300000,
+      "endSample": 3445200,
+      "startSeconds": 137.5,
+      "endSeconds": 143.55
+    },
+    {
+      "scene": "06-failures",
+      "text": "After an abrupt demand shift, every model covers zero of eighteen holdout outcomes.",
+      "startSample": 3445200,
+      "endSample": 3585600,
+      "startSeconds": 143.55,
+      "endSeconds": 149.4
+    },
+    {
+      "scene": "06-failures",
+      "text": "Historical uncertainty can fail completely.",
+      "startSample": 3585600,
+      "endSample": 3669000,
+      "startSeconds": 149.4,
+      "endSeconds": 152.875
+    },
+    {
+      "scene": "07-next",
+      "text": "TrayWise brings incomplete observations, learned prediction, and human judgment into one inspectable planning loop.",
+      "startSample": 3741000,
+      "endSample": 3936000,
+      "startSeconds": 155.875,
+      "endSeconds": 164.0
+    },
+    {
+      "scene": "07-next",
+      "text": "The next test is a prospective kitchen study measuring actual surplus and unmet requests.",
+      "startSample": 3936000,
+      "endSample": 4086600,
+      "startSeconds": 164.0,
+      "endSeconds": 170.275
+    },
+    {
+      "scene": "07-next",
+      "text": "Enough for lunch.",
+      "startSample": 4086600,
+      "endSample": 4126800,
+      "startSeconds": 170.275,
+      "endSeconds": 171.95
+    },
+    {
+      "scene": "07-next",
+      "text": "Room for uncertainty.",
+      "startSample": 4126800,
+      "endSample": 4173000,
+      "startSeconds": 171.95,
+      "endSeconds": 173.875
+    }
+  ],
+  "timingNote": "Exact sample boundaries of generated sentences, including model-produced leading/trailing silence. SRT uses these sentence spans; not word-level forced alignment."
+}
