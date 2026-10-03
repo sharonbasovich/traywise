@@ -32,6 +32,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const sample = fictionalSample();
 const report = evaluate(sample);
 const originalReport = await fs.readFile('docs/EVALUATION-REPORT.md', 'utf8');
+// Preserve the exact original bytes in the native text viewer. The unchanged app
+// server sends text/plain without charset, which Chromium decodes as Windows-1252.
+const reportViewURL = 'data:text/plain;charset=utf-8;base64,' + Buffer.from(originalReport, 'utf8').toString('base64');
 const expectedPlans = [1, 3, 6].map(c => forecast(report, '2026-09-21', 0, c));
 
 function checkReport(text) {
@@ -81,6 +84,7 @@ async function verifyInputs() {
   assert.deepEqual(TIMING.scenes.map(s => s.id), ['01-decision', '02-observations', '03-learning', '04-choice', '05-audit', '06-failures', '07-next']);
   for (const s of TIMING.scenes) assert.ok(s.endSeconds > s.startSeconds);
   checkReport(originalReport);
+  assert.equal(digest(Buffer.from(reportViewURL.split(',')[1], 'base64')), HASHES['docs/EVALUATION-REPORT.md']);
   const fixture = {
     product: 'TrayWise', formatVersion: 1, isFictionalDemo: true,
     source: 'Fictional campus kitchen', protocolVersion: PROTOCOL_VERSION,
@@ -116,7 +120,7 @@ const run = {
   runAttempt: process.env.GITHUB_RUN_ATTEMPT, appURL: BASE,
   publicPreview: 'https://sharonbasovich.github.io/traywise/',
   reportPublicSource: `https://github.com/sharonbasovich/traywise/blob/${BASELINE_COMMIT}/docs/EVALUATION-REPORT.md`,
-  provenance: 'Actual Chromium video of the unchanged checked-out app served on the Actions runner. Not a live-hosted-site capture. The report is its original plain Markdown; JSON is the actual downloaded file. No DOM patches, fake cursor, synthetic application screens, or audio are added.',
+  provenance: 'Actual Chromium video of the unchanged checked-out app served on the Actions runner. Not a live-hosted-site capture. The report is a byte-identical local copy of its original plain Markdown in the native text viewer with explicit UTF-8 encoding; JSON is the actual downloaded file. No DOM patches, fake cursor, synthetic application screens, or audio are added.',
   viewport: VIEWPORT, sourceSHA256: HASHES, narrationDurationSeconds: TIMING.durationSeconds,
   timestampNote: 'Scene event times are elapsed wall-clock seconds from newPage creation, not frame-accurate media timestamps. Use screenshots and actual video frames when editing. Navigation and all recorded failures are retained.',
   scenes: [],
@@ -317,11 +321,11 @@ const actions = [
     await page.waitForTimeout(7000);
   },
   async (page, mark) => {
-    const response = await page.goto(new URL('docs/EVALUATION-REPORT.md', BASE).href);
-    assert.equal(response.status(), 200);
-    assert.equal(digest(await response.body()), HASHES['docs/EVALUATION-REPORT.md']);
-    checkReport(await page.locator('body').innerText());
-    await mark('actual-plain-markdown-report', {format: 'Original published Markdown displayed as plain text by Chromium; not an app report UI', noSignal: {selected: 'recentMean', selectedMAE: 27.7222, weekdayMedianMAE: 23.9722}, abruptShift: '0/18 for all three models', requiredEditorialLabel: 'Synthetic evaluation; no field outcomes.'});
+    await page.goto(reportViewURL);
+    const displayedReport = await page.locator('pre').textContent();
+    assert.equal(digest(Buffer.from(displayedReport, 'utf8')), HASHES['docs/EVALUATION-REPORT.md']);
+    checkReport(displayedReport);
+    await mark('actual-plain-markdown-report', {format: 'Byte-identical local copy of the original published Markdown, displayed in Chromium native text viewer with explicit UTF-8; not a live-hosted report or app report UI', originalFile: 'docs/EVALUATION-REPORT.md', originalSHA256: HASHES['docs/EVALUATION-REPORT.md'], noSignal: {selected: 'recentMean', selectedMAE: 27.7222, weekdayMedianMAE: 23.9722}, abruptShift: '0/18 for all three models', requiredEditorialLabel: 'Synthetic evaluation; no field outcomes. Local copy of published report.'});
     await page.waitForTimeout(16000);
     await page.mouse.wheel(0, 380);
     await page.waitForTimeout(400);
