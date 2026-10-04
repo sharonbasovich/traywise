@@ -5,6 +5,12 @@ A local meal-preparation planner built from scratch for **ForgeHacks 2026 · AI 
 
 **This is a prototype with fictional demo data. It does not claim measured food or carbon savings, validated real-world performance, or guaranteed forecast coverage.** No ordering, payments, external AI API, user-data upload, analytics, remote fonts or runtime package CDN.
 
+## Published demo and submission
+
+- [Live app](https://sharonbasovich.github.io/traywise/)
+- [Public 2-minute 8-second demo video](https://www.youtube.com/watch?v=_MeyNt9_Swo)
+- [ForgeHacks submission](https://devpost.com/software/traywise), verified submitted October 4, 2026 at 01:09 UTC in **AI + Climate**
+
 ## Run
 
 Requires Node.js 20+.
@@ -61,7 +67,7 @@ A separate evaluator froze synthetic fixtures and a NumPy oracle before seeing i
 
 An independent adversarial audit then found a floating-point quantile/tie edge case. The optimizer was corrected to inspect integer neighbors of every scenario plus zero. Follow-on runs are explicitly **post-inspection regression**, not fresh untouched validation. The complete preserved evaluator report is in `docs/EVALUATION-REPORT.md` and linked in the evidence view.
 
-Published baseline verification: 19 development tests passed (9 model/property tests, 7 DOM/security tests and 3 independent export-race regression tests), plus 5,509 independent adversarial assertions and independent NumPy reproduction across six worlds. DOM tests cover keyboard tabs, invalid-date recovery, unchanged metrics during penalty adjustment, malicious filename handling, failed imports, and sample provenance after CSV roundtrip. The published baseline also passed 4 real Chromium browser tests across desktop and mobile viewports; actual screenshots were captured and visually inspected. This is focused workflow and responsive-layout coverage, not a comprehensive accessibility audit or real-device/Safari validation. The demo video has not yet been recorded.
+Verified application revision: 20 development tests passed (9 model/property tests, 8 DOM/security/presentation tests and 3 independent export-race regression tests), plus 5,509 independent adversarial assertions and independent NumPy reproduction across six worlds. DOM tests cover keyboard tabs, invalid-date recovery, unchanged metrics during penalty adjustment, malicious filename handling, failed imports, and sample provenance after CSV roundtrip. The same application revision also passed 4 real Chromium browser tests across desktop and mobile viewports; actual screenshots were captured and visually inspected. This is focused workflow and responsive-layout coverage, not a comprehensive accessibility audit or real-device/Safari validation. The public demo video is recorded and linked above.
 
 ## Repository map
 
@@ -70,17 +76,17 @@ Published baseline verification: 19 development tests passed (9 model/property t
 - `src/app.js`: local-only UI, safe DOM rendering, reproducible export
 - `src/style.css`, `index.html`: responsive, keyboard-navigable workspace
 - `test/`: development and property tests
-- `docs/PROOF-MATRIX.md`, `docs/DEMO-SCRIPT.md`: claim-to-evidence plan and three-minute video script
+- `docs/PROOF-MATRIX.md`, `docs/DEMO-SCRIPT.md`: original claim-to-evidence plan and three-minute planning script; the published 2-minute 8-second production is linked above
 
 ## Submission boundaries
 
-Selected track: **AI + Climate**. AI-assisted coding is disclosed; application core, UI and demonstration data were created for this entry after prompt release. No previous campaign core code, fixture or visual asset is reused. Solo build pending verified teammate additions. The source and [public QA preview](https://sharonbasovich.github.io/traywise/) are published. This is a QA preview, not a contest submission. The mandatory public 2–4-minute demo and final submission verification remain release gates.
+Selected track: **AI + Climate**. AI-assisted coding is disclosed; application core, UI and demonstration data were created for this entry after prompt release. No previous campaign core code, fixture or visual asset is reused. Submitted as a solo entry by Sharon Basovich. The source, [live app](https://sharonbasovich.github.io/traywise/), and [public demo video](https://www.youtube.com/watch?v=_MeyNt9_Swo) are published. [Devpost](https://devpost.com/software/traywise) confirmed the ForgeHacks submission on October 4, 2026 at 01:09 UTC. AI-generated narration was used in the video.
 
 ## Browser verification and hosting
 
 All links and assets are relative, including modules and evaluation-report link, for a GitHub Pages project path such as `/traywise/`. A CSP meta tag preserves the no-network policy on static hosting; the local server also sends CSP and nosniff headers. The plot uses inline style properties only; scripts remain same-origin-only, with no inline script allowance.
 
-The authored CI suite runs Chromium desktop (1440px) and mobile (iPhone-sized viewport) against the served `/traywise/` path. It checks real file import/download, keyboard tabs, no unexpected network requests, no runtime page errors, invalid/underpowered state recovery, overflow and actual screenshots. The [baseline verification run](https://github.com/sharonbasovich/traywise/actions/runs/37144478811) passed all 19 development tests and 4 browser tests on published commit `6d8cc1a83563138cf65a579b84aa3b6f220f6956`. All 22 files in that baseline were verified byte-identical to the reviewed source snapshot. [Pages deployment](https://github.com/sharonbasovich/traywise/actions/runs/37144683292) succeeded for the same commit. Later changes must pass their own CI; these links establish the baseline only.
+The authored CI suite runs Chromium desktop (1440px) and mobile (iPhone-sized viewport) against the served `/traywise/` path. It checks real file import/download, keyboard tabs, no unexpected network requests, no runtime page errors, invalid/underpowered state recovery, overflow and actual screenshots. The [application verification run](https://github.com/sharonbasovich/traywise/actions/runs/37145335839) passed all 20 development tests and 4 browser tests on published commit `33c89a81d57e7f88d16b59f4aa01e959506ffc67`. The run logs explicitly record both totals. [Pages deployment](https://github.com/sharonbasovich/traywise/actions/runs/37145335023) succeeded for the same commit. These receipts establish that application revision; later capture-tooling and documentation updates do not constitute new model validation. The numerical engine remains frozen at SHA-256 `3c1fffc956c5b167aa27ae86d77c5b04ca3aee3b27150be463a6d30262ef4d9b`.
 
 ```sh
 npx playwright install --with-deps chromium
